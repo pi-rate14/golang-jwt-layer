@@ -1,13 +1,19 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"github.com/pi-rate14/golang-jwt-project/routes"
 )
 
 func main() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("error loading env file")
+	}
 	port := os.Getenv("PORT")
 
 	if port == "" {
